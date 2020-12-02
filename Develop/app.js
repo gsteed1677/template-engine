@@ -11,6 +11,101 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./lib/htmlRenderer");
 
 
+function promptEmployee() {
+    inquirer
+        .prompt([
+
+        {
+            type: "list",
+            message: "Enter your role within the company:",
+            name: "employeeRole",
+            choices: ['engineer', 'intern', 'manager', 'No more employees']
+            
+        }
+       ]);
+}
+
+function choiceManager() {
+    inquirer
+        .prompt([
+            {
+                type: "input",
+                name: "managerName",
+                message: "Enter your first name:"
+            },
+            {
+                type: "input",
+                name: "managerID",
+                message: "Enter your ID number:"
+            },
+             {
+                type: "input",
+                name: "managerEmail",
+                message: "Enter your email:"
+            },
+             {
+                type: "input",
+                name: "officeNumber",
+                message: "Enter your office number:"
+            }
+        ])
+
+}
+
+function choiceEngineer() {
+    inquirer
+        .prompt([
+            {
+                type: "input",
+                name: "engName",
+                message: "Enter your first name:"
+            },
+            {
+                type: "input",
+                name: "engID",
+                message: "Enter your ID number:"
+            },
+             {
+                type: "input",
+                name: "engEmail",
+                message: "Enter your email:"
+            },
+             {
+                type: "input",
+                name: "gitHub",
+                message: "Enter your Git Hub user name:"
+            }
+        ])
+
+}
+
+
+function choiceIntern() {
+    inquirer
+        .prompt([
+            {
+                type: "input",
+                name: "internName",
+                message: "Enter your first name:"
+            },
+            {
+                type: "input",
+                name: "internID",
+                message: "Enter your ID number:"
+            },
+             {
+                type: "input",
+                name: "internEmail",
+                message: "Enter your email:"
+            },
+             {
+                type: "input",
+                name: "school",
+                message: "Enter your school:"
+            }
+        ])
+
+}
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
