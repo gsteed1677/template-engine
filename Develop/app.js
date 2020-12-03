@@ -10,6 +10,7 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+const employeeRoles = []
 
 function promptEmployee() {
     inquirer
@@ -19,13 +20,34 @@ function promptEmployee() {
             type: "list",
             message: "Enter your role within the company:",
             name: "employeeRole",
-            choices: ['engineer', 'intern', 'manager', 'No more employees']
+            choices: ['Manager', 'Engineer', 'Intern', 'No more employees']
             
         }
-       ]);
+       ])
+       .then((roleInput) => {
+           switch(roleInput.employeeRole){
+               case "Manager": 
+               addManager();
+               break;
+
+               case "Engineer":
+               addEnigma();
+               break;
+
+               case "Intern":
+               addIntern();
+               break;
+
+               default:
+               writeHTML();
+                
+           }
+
+
+       })
 }
 
-function choiceManager() {
+function addManager() {
     inquirer
         .prompt([
             {
@@ -48,11 +70,20 @@ function choiceManager() {
                 name: "officeNumber",
                 message: "Enter your office number:"
             }
-        ])
+        ]).then((managerData)=> {
+            const manager = new Manager(
+                managerData.manName,
+                managerData.manID,
+                managerData.manEmail,
+                managerData.manOffice,
+                )
+            employeeRoles.push(manager);
 
+            promptEmployee();
+        })
 }
 
-function choiceEngineer() {
+function addEngineer() {
     inquirer
         .prompt([
             {
@@ -80,7 +111,7 @@ function choiceEngineer() {
 }
 
 
-function choiceIntern() {
+function addIntern() {
     inquirer
         .prompt([
             {
