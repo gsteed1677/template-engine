@@ -106,7 +106,17 @@ function addEngineer() {
                 name: "gitHub",
                 message: "Enter your Git Hub user name:"
             }
-        ])
+        ]).then((engData)=> {
+            const engineer = new Engineer(
+                engData.engName,
+                engData.engID,
+                engData.engEmail,
+                engData.engGitHub,
+                )
+            employeeRoles.push(engineer);
+
+            promptEmployee();
+        })
 
 }
 
@@ -134,7 +144,17 @@ function addIntern() {
                 name: "school",
                 message: "Enter your school:"
             }
-        ])
+        ]).then((internData)=> {
+            const intern = new Intern(
+                internData.internName,
+                internData.internID,
+                internData.internEmail,
+                internData.internGitHub,
+                )
+            employeeRoles.push(intern);
+
+            promptEmployee();
+        })
 
 }
 // Write code to use inquirer to gather information about the development team members,
