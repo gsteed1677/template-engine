@@ -31,7 +31,7 @@ function promptEmployee() {
                break;
 
                case "Engineer":
-               addEnigma();
+               addEngineer();
                break;
 
                case "Intern":
@@ -45,6 +45,12 @@ function promptEmployee() {
 
 
        })
+}
+
+
+function writeHTML() {
+    console.log(employeeRoles)
+//fs.writeFileSync(outputPath, render(employeeRoles))
 }
 
 function addManager() {
@@ -72,10 +78,10 @@ function addManager() {
             }
         ]).then((managerData)=> {
             const manager = new Manager(
-                managerData.manName,
-                managerData.manID,
-                managerData.manEmail,
-                managerData.manOffice,
+                managerData.managerName,
+                managerData.managerID,
+                managerData.managerEmail,
+                managerData.officeNumber,
                 )
             employeeRoles.push(manager);
 
@@ -111,7 +117,7 @@ function addEngineer() {
                 engData.engName,
                 engData.engID,
                 engData.engEmail,
-                engData.engGitHub,
+                engData.gitHub,
                 )
             employeeRoles.push(engineer);
 
@@ -149,7 +155,7 @@ function addIntern() {
                 internData.internName,
                 internData.internID,
                 internData.internEmail,
-                internData.internGitHub,
+                internData.school,
                 )
             employeeRoles.push(intern);
 
@@ -157,6 +163,8 @@ function addIntern() {
         })
 
 }
+
+promptEmployee()
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
