@@ -49,8 +49,7 @@ function promptEmployee() {
 
 
 function writeHTML() {
-    console.log(employeeRoles)
-//fs.writeFileSync(outputPath, render(employeeRoles))
+fs.writeFileSync(outputPath, render(employeeRoles), "utf-8")
 }
 
 function addManager() {
